@@ -1,6 +1,6 @@
 [deploy]
 startCommand = "voicemode serve --host 0.0.0.0 --port $PORT"
-healthcheckPath = "/health"
-healthcheckTimeout = 30
+healthcheckPath = "/sse"
+healthcheckTimeout = 60
 restartPolicyType = "ON_FAILURE"
 restartPolicyMaxRetries = 3
