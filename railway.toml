@@ -1,15 +1,3 @@
-[build]
-# Install libasound2-dev for simpleaudio ALSA compilation
-nixpacksPlan = """
-{
-  "phases": {
-    "setup": {
-      "aptPkgs": ["ffmpeg", "libasound2-dev"]
-    }
-  }
-}
-"""
-
 [deploy]
 startCommand = "voicemode serve --host 0.0.0.0 --port $PORT"
 healthcheckPath = "/health"
