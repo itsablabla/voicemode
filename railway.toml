@@ -1,0 +1,20 @@
+# railway.toml — VoiceMode Railway deployment configuration
+# This file codifies the deployment settings to prevent UI drift.
+# See: https://docs.railway.com/reference/config-as-code
+
+[build]
+# Use Nixpacks builder (default for Python projects)
+builder = "NIXPACKS"
+
+[deploy]
+# Use the startup script that handles credential injection and token refresh
+startCommand = "bash start.sh"
+
+# Health check: the MCP endpoint responds to POST /mcp
+# Railway will poll this path; a 4xx on GET is fine — we just need it to be reachable
+healthcheckPath = "/mcp"
+healthcheckTimeout = 30
+
+# Restart on failure (not always — avoids crash loops on bad config)
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 3
